@@ -49,7 +49,7 @@
                     </Input>
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
+                    <Button type="primary" @click="handleSubmit()">登录</Button>
                 </FormItem>
             </Form>
             </Col>
@@ -57,6 +57,7 @@
     </div>
 </template>
 <script>
+    import axios from 'axios';
 export default {
     data() {
         return {
@@ -77,13 +78,13 @@ export default {
     },
     methods: {
         handleSubmit(name) {
-            this.$refs[name].validate((valid) => {
-                if (valid) {
-                    this.$Message.success('Success!');
-                } else {
-                    this.$Message.error('Fail!');
-                }
-            })
+            axios.get('http://jxjweb.sc2yun.com/2code_php/login.php?u=jxj2991&p=666666')
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         }
     }
 }
