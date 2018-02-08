@@ -1,4 +1,6 @@
 <?php
+
+header("Access-Control-Allow-Origin: *"); 
 $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $p = isset($_GET["p"]) ? $_GET["p"]: '';
 
