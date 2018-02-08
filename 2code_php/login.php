@@ -25,10 +25,12 @@ $verify = new Verify();
 $verify->user = $u;
 
 if ($result->num_rows > 0){
+	$_SESSION['true'] = $true;
     $verify->code = 1;
 }else{
 $verify->code = 0;
 }
- echo json_encode($verify);
+echo json_encode($verify);
 mysqli_close($conn);
+$conn->close();
 ?>
