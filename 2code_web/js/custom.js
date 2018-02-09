@@ -84,31 +84,62 @@ function start() {
 
 
     //登录
-    $('#login_btn').on('click', function(event) {
-        var u = $('#user_g').val();
-        var p = $('#password_g').val();
-        console.log(u, p)
-        $.ajax({
-            url: '//jxjweb.sc2yun.com/2code_php/login.php',
-            data: `u=${u}&p=${p}`,
-            success: function(msg) {
-                var data = JSON.parse(msg)
-                if (data.code == '1') {
-                    console.log('ok');
-                    localStorage.u = data.user;
-                    $('#modal-form').removeClass('in');
-                    $('.modal-backdrop').removeClass('in');
-                    $('.user').show();
-                    $('.un_user').hide();
-                    $('.user_name').text(localStorage.u);
-                    menu();
-                } else {
-                    $('#login_info').html('账号密码错误!');
-                }
-            },
+    $('#login_btn').on('click', function() {
+        login();
+    });
+    //添加
+    $("#add_code").on('click', function() {
+        add_code();
+    });
+}
 
-        });
-    })
+function add_code() {
+    var u = localStorage.u;
+    var c = $('#add_url').val();
+    var a = $('#add_address').val();
+    var n = $('#add_name').val();
+    if (!c || !a || !n) {
+        alert('请完整输入!');
+        return;
+    }
+    $.ajax({
+        url: '//jxjweb.sc2yun.com/2code_php/add.php',
+        data: `u=${u}&c=${c}&a=${a}&n=${n}`,
+        success: function(msg) {
+            var data = JSON.parse(msg)
+            if (data.code == '1') {
+                alert('新增成功!');
+                location.reload();
+            } else {
+                alert('新增失败!');
+            }
+        },
+
+    });
+}
+
+function login() {
+    var u = $('#user_g').val();
+    var p = $('#password_g').val();
+    $.ajax({
+        url: '//jxjweb.sc2yun.com/2code_php/login.php',
+        data: `u=${u}&p=${p}`,
+        success: function(msg) {
+            var data = JSON.parse(msg)
+            if (data.code == '1') {
+                console.log('ok');
+                localStorage.u = data.user;
+                $('#modal-form2').modal('hide');
+                $('.user').show();
+                $('.un_user').hide();
+                $('.user_name').text(localStorage.u);
+                menu();
+            } else {
+                $('#login_info').html('账号密码错误!');
+            }
+        },
+
+    });
 }
 
 function menu() {
@@ -131,13 +162,13 @@ function menu() {
                  <h3><a href="javascript:void(0)">${data.content[i].name}</a></h3>
                  <p>${data.content[i].content}</p>
                  <p>${data.content[i].address}</p>
-                 <a href="javascript:void(0)" class="btn section-btn">修改</a>
+                 <button class="btn section-btn" onclick='fix(${data.content[i].id})'>修改</button>
               </div>
            </div>
         </div>`;
                     $('#code_b').append(html);
-                    var ele=`.ele${i}`;
-                    var url=`${data.content[i].content}`;
+                    var ele = `.ele${i}`;
+                    var url = `${data.content[i].content}`;
                     paint(url, ele);
                 }
 
@@ -145,6 +176,11 @@ function menu() {
         },
 
     });
+}
+
+function fix(id) {
+    console.log(id);
+    $('#modal-form2').modal('show');
 }
 
 function paint(url, ele) {　　　　　　
