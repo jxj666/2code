@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *"); 
 $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $p = isset($_GET["p"]) ? $_GET["p"]: '';
-
+session_start();
 
  
 // 连主库
@@ -25,7 +25,7 @@ $verify = new Verify();
 $verify->user = $u;
 
 if ($result->num_rows > 0){
-	$_SESSION['true'] = $true;
+	$_SESSION['code'] = $u;
     $verify->code = 1;
 }else{
 $verify->code = 0;

@@ -877,7 +877,7 @@ http://www.templatemo.com/tm-509-hydro
         margin: 15px 0 15px 0;
         height: 50px;
         background: #fcf8e3;
-        color: #fff;
+        color: #111;
     }
 
     .modal-dialog form .form-control:hover,
@@ -1068,7 +1068,12 @@ http://www.templatemo.com/tm-509-hydro
 
     #contact #add_code,
     #delete_code,
-   #fix_code {
+    #fix_code {
         background: #ce3232;
+        color: #fff;
+    }
+
+    #login_btn {
+        background: red;
         color: #fff;
     }

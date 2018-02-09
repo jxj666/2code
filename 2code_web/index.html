@@ -57,6 +57,7 @@
                     <div class="home-info">
                         <h1>二维码活码管理系统</h1>
                         <a href="javascript:void(0)" class="btn section-btn smoothScroll user user_name">用户</a>
+                        <a href="javascript:exit()" class="btn section-btn smoothScroll user">退出</a>
                         <span>
 							   成聚移动二维码管理系统
 							   <small>简单、高效的移动营销工具,稳定、可靠的二维码管理系统,实现二维码先印后改。</small>
@@ -181,9 +182,9 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade in" id="sign_in">
                                     <form >
-                                        <input type="text" autocomplete="off" class="form-control" name="name" placeholder="名称" required>
-                                        <input type="text" autocomplete="off" class="form-control" name="url" placeholder="路径" required>
-                                        <input type="text" autocomplete="off" class="form-control" name="address" placeholder="区域" required>
+                                        <input type="text" id="fix_name" autocomplete="off" class="form-control" name="name" placeholder="名称" required>
+                                        <input type="text" id="fix_url" autocomplete="off" class="form-control" name="url" placeholder="路径" required>
+                                        <input type="text" id="fix_address" autocomplete="off" class="form-control" name="address" placeholder="区域" required>
                                         <input type="button" id="fix_code" class="form-control" name="submit" value="确定">
                                         <input type="button" id="delete_code" class="form-control" name="submit" value="删除">
                                     </form>
