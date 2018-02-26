@@ -225,7 +225,10 @@ function menu() {
                     paint(url, ele);
                 }
 
-            } else {}
+            } else {
+              localStorage.u='';
+              start();  
+            }
         },
 
     });

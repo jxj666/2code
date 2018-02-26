@@ -5,7 +5,7 @@ $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $i = isset($_GET["i"]) ? $_GET["i"]: '';
 session_start();
 if ($_SESSION['code']!=$u) {
-	exit('非法操作!');
+	exit('{"code":0,"msg":"非法操作!"}');
 }
  
 // 连主库

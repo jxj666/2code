@@ -59,9 +59,9 @@
                         <a href="javascript:void(0)" class="btn section-btn smoothScroll user user_name">用户</a>
                         <a href="javascript:exit()" class="btn section-btn smoothScroll user">退出</a>
                         <span>
-							   成聚移动二维码管理系统
-							   <small>简单、高效的移动营销工具,稳定、可靠的二维码管理系统,实现二维码先印后改。</small>
-						  </span>
+                               成聚移动二维码管理系统
+                               <small>简单、高效的移动营销工具,稳定、可靠的二维码管理系统,实现二维码先印后改。</small>
+                          </span>
                     </div>
                 </div>
             </div>
@@ -100,17 +100,28 @@
                             <input type="text" class="form-control" placeholder="网址" name="url" required="" id="add_url">
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" class="form-control" placeholder="区域地址" name="addres" required="" id="add_address">
+                            <input type="text" class="form-control" placeholder="备注信息" name="info" required="" id="info">
                         </div>
-                        <!-- 						  <div class="col-md-6 col-sm-6">
-							   <select class="form-control" id="cf-budgets" name="cf-budgets">
-									<option></option>
-							   </select>
-						  </div> -->
-                        <!-- 
-						  <div class="col-md-12 col-sm-12">
-							   <textarea class="form-control" rows="6" placeholder="Your requirements" id="cf-message" name="cf-message" required=""></textarea>
-						  </div> -->
+                        <div class="col-md-6 col-sm-12 address_code">
+                            <select name="province" id="province">
+                                <option value="-1">省</option>
+                            </select>
+                            <select name="city" id="city" disabled>
+                                <option value="-1">市</option>
+                            </select>
+                            <select name="district" id="district" disabled>
+                                <option value="-1">区</option>
+                            </select>
+                        </div>
+                        <script type="text/html" id="template_area">
+                            {{ for(var i=0;i
+                            < district_list.length;i++){ }} <option value="{{= district_list[i].code }}">{{= district_list[i].name }}</option>
+                                {{ } }}
+                        </script>
+                        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+                        <script src="js/microtemplating.js"></script>
+                        <script src="js/address_data.js"></script>
+                        <script src="js/select_location.js"></script>
                         <div class="col-md-12 col-sm-12">
                             <input type="button" class="form-control" name="submit" value="新建二维码" id="add_code">
                         </div>
@@ -150,8 +161,8 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade in" id="sign_in">
                                     <form>
-                                        <input id="user_g" type="text" class="form-control" name="text" placeholder="用户名" required>
-                                        <input id="password_g" type="password" class="form-control" name="password" placeholder="密码" required>
+                                        <input id="user_g" type="text" class="form-control" name="text" placeholder="用户名" autocomplete="off" required>
+                                        <input id="password_g" type="password" class="form-control" name="password" placeholder="密码" autocomplete="off" required>
                                         <input id="login_btn" type="button" class="form-control" name="submit" value="确定">
                                         <p id="login_info" class="">
                                             输入账号密码!
@@ -181,7 +192,7 @@
                                     <h2>管理</h2>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade in" id="sign_in">
-                                    <form >
+                                    <form>
                                         <input type="text" id="fix_name" autocomplete="off" class="form-control" name="name" placeholder="名称" required>
                                         <input type="text" id="fix_url" autocomplete="off" class="form-control" name="url" placeholder="路径" required>
                                         <input type="text" id="fix_address" autocomplete="off" class="form-control" name="address" placeholder="区域" required>

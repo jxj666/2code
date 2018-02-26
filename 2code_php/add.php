@@ -7,7 +7,7 @@ $a = isset($_GET["a"]) ? $_GET["a"] : '';
 $n = isset($_GET["n"]) ? $_GET["n"]: '';
 session_start();
 if ($_SESSION['code']!=$u) {
-	exit('非法操作!');
+	exit('{"code":0,"msg":"非法操作!"}');
 }
  
 // 连主库
@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 } 
  
 
-$sql="INSERT INTO `app_jxjweb`.`2code_code` (`id`, `user`, `num`, `content`, `address`, `address_id`, `name`) VALUES (NULL, '".$u."', '1', '".$c."', '".$a."', '', '".$n."')";
+$sql="INSERT INTO `app_jxjweb`.`2code_code` (`id`, `user`, `num`, `content`, `address`, `address_id`, `name`, `info`) VALUES (NULL, '".$u."', '1', '".$c."', '".$a."', '', '".$n."','')";
 
 
 
