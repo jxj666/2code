@@ -52,8 +52,6 @@
             }
         }
     });
-
-
     // SMOOTH SCROLL
     $(function() {
         $('.custom-navbar .nav_c a').on('click', function(event) {
@@ -64,9 +62,6 @@
             event.preventDefault();
         });
     });
-
-
-
     start();
 
 })(jQuery);
@@ -81,8 +76,6 @@ function start() {
         $('.user').hide();
         $('.un_user').show();
     }
-
-
     //登录
     $('#login_btn').on('click', function() {
         login();
@@ -142,22 +135,31 @@ function delete_code() {
                 alert('删除失败!');
             }
         },
-
     });
 }
 
 function add_code() {
     var u = localStorage.u;
     var c = $('#add_url').val().trim();
-    var a = $('#add_address').val().trim();
+    var i = $('#info').val().trim();
     var n = $('#add_name').val().trim();
-    if (!c || !a || !n) {
+    var a = '';
+    if ($('#province').val() != -1) {
+        a += $(`#province option[value="${$('#province').val()}"]`).text() + ' ';
+    }
+    if ($('#city').val() != -1) {
+        a += $(`#city option[value="${$('#city').val()}"]`).text() + ' ';
+    }
+    if ($('#district').val() != -1) {
+        a += $(`#district option[value="${$('#district').val()}"]`).text() + ' ';
+    }
+    if (!c || !n) {
         alert('请完整输入!');
         return;
     }
     $.ajax({
         url: '//jxjweb.sc2yun.com/2code_php/add.php',
-        data: `u=${u}&c=${c}&a=${a}&n=${n}`,
+        data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}`,
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
@@ -215,7 +217,8 @@ function menu() {
                  <h3><a href="javascript:void(0)">${data.content[i].name}</a></h3>
                  <p>${data.content[i].content}</p>
                  <p>${data.content[i].address}</p>
-                 <button class="btn section-btn" onclick='fix("${data.content[i].id}","${data.content[i].address}","${data.content[i].name}","${data.content[i].content}")'>修改</button>
+                 <p>${data.content[i].info}</p>
+                 <button class="btn section-btn" onclick='fix("${data.content[i].id}")'>修改</button>
               </div>
            </div>
         </div>`;
@@ -226,8 +229,8 @@ function menu() {
                 }
 
             } else {
-              localStorage.u='';
-              start();  
+                localStorage.u = '';
+                start();
             }
         },
 
@@ -280,7 +283,7 @@ function paint(url, ele) {　　　　　　
     }
 }
 
-function exit(){
-  localStorage.u='';
-  location.reload();
+function exit() {
+    localStorage.u = '';
+    location.reload();
 }
