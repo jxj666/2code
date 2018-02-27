@@ -5,8 +5,8 @@
     <title>Home</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="QR code">
+    <meta name="keywords" content="QR code">
     <meta name="author" content="jxjweb.top">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -33,7 +33,7 @@
                     <span class="icon icon-bar"></span>
                 </button>
                 <!-- lOGO TEXT HERE -->
-                <a href="index.html" class="navbar-brand">成聚移动</a>
+                <a href="index.html" class="navbar-brand">成聚移动二维码管理系统</a>
             </div>
             <!-- MENU LINKS -->
             <div class="collapse navbar-collapse">
@@ -71,10 +71,29 @@
     <section id="blog" data-stellar-background-ratio="0.5" class="user">
         <div class="container">
             <div class="row" id="code_b">
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-12">
                     <div class="section-title">
                         <h2>管理活码</h2>
                         <span class="line-bar">...</span>
+                        <div class="row">
+                            <div class="col-md-12 search">
+                                <!-- CONTACT FORM HERE -->
+                                <form role="form">
+                                    <div class="col-md-3 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="搜索名称" name="name" required="" id="search_name">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="搜索网址" name="url" required="" id="search_url">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="搜索地域" name="address" required="" id="search_address">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <input type="button" class="form-control" name="submit" value="搜索二维码" id="search_code">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,13 +113,13 @@
                     <!-- CONTACT FORM HERE -->
                     <form id="contact-form" role="form">
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" class="form-control" placeholder="二维码名称" name="name" required="" id="add_name">
+                            <input type="text" class="form-control" placeholder="二维码名称(必填)" name="name" required="" id="add_name">
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" class="form-control" placeholder="网址" name="url" required="" id="add_url">
+                            <input type="text" class="form-control" placeholder="网址(必填)" name="url" required="" id="add_url">
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <input type="text" class="form-control" placeholder="备注信息" name="info" required="" id="info">
+                            <input type="text" class="form-control" placeholder="备注信息" name="info" required="" id="add_info">
                         </div>
                         <div class="col-md-6 col-sm-12 address_code">
                             <select name="province" id="province">
@@ -189,8 +208,9 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade in" id="sign_in">
                                     <form>
-                                        <input type="text" id="fix_name" autocomplete="off" class="form-control" name="name" placeholder="名称" required>
-                                        <input type="text" id="fix_url" autocomplete="off" class="form-control" name="url" placeholder="路径" required>
+                                        <input type="text" id="fix_name" autocomplete="off" class="form-control" name="name" placeholder="名称(必填)" required>
+                                        <input type="text" id="fix_url" autocomplete="off" class="form-control" name="url" placeholder="路径(必填)" required>
+                                        <input type="text" id="fix_info" autocomplete="off" class="form-control" name="url" placeholder="备注信息" required>
                                         <input type="text" id="fix_address" autocomplete="off" class="form-control" name="address" placeholder="区域" required>
                                         <input type="button" id="fix_code" class="form-control" name="submit" value="确定">
                                         <input type="button" id="delete_code" class="form-control" name="submit" value="删除">

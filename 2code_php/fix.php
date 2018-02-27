@@ -6,6 +6,7 @@ $c = isset($_GET["c"]) ? $_GET["c"]: '';
 $a = isset($_GET["a"]) ? $_GET["a"] : '';
 $n = isset($_GET["n"]) ? $_GET["n"]: '';
 $i = isset($_GET["i"]) ? $_GET["i"]: '';
+$i2 = isset($_GET["i2"]) ? $_GET["i2"]: '';
 session_start();
 if ($_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');
@@ -21,7 +22,8 @@ if ($conn->connect_error) {
 
 $sql="UPDATE  `app_jxjweb`.`2code_code` SET  `content` =  '".$c."',
 `address` =  '".$a."',
-`name` =  '".$n."'  WHERE  `2code_code`.`id` ='".$i."' AND `2code_code`.`user` ='".$u."'";
+`name` =  '".$n."',
+`info` =  '".$i2."'  WHERE  `2code_code`.`id` ='".$i."' AND `2code_code`.`user` ='".$u."'";
 
 
 

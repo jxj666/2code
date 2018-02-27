@@ -302,9 +302,13 @@ button::-moz-focus-inner {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     background: #000;
 }
-.address_code{
-  text-align: left;
+
+.address_code {
+    text-align: left;
 }
+
+
+
 
 /* Main image in popup */
 
@@ -318,6 +322,9 @@ img.mfp-img {
     padding: 40px 0 40px;
     margin: 0 auto;
 }
+
+
+
 
 
 /* The shadow behind the image */
@@ -375,6 +382,32 @@ img.mfp-img {
 
 .mfp-gallery .mfp-image-holder .mfp-figure {
     cursor: pointer;
+}
+
+
+
+
+
+
+/*self*/
+
+.search {
+    padding: 50px 0 25px;
+}
+
+
+
+.search div {
+    margin-top: 10px;
+}
+
+.search input {
+    height: 38px;
+}
+
+.search #search_code {
+    background: #ce3232;
+    color: #fff;
 }
 
 @media screen and (max-width: 800px) and (orientation: landscape),

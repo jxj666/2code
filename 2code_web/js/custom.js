@@ -92,6 +92,31 @@ function start() {
     $("#fix_code").on('click', function() {
         fix_code();
     });
+    //查询
+    $("#search_code").on('click', function() {
+        search_code();
+    })
+}
+
+function search_code() {
+    var u = localStorage.u;
+    var a = $('#search_address').val().trim();
+    var n = $('#search_name').val().trim();
+    var c = $('#search_url').val().trim();
+    $.ajax({
+        url: '//jxjweb.sc2yun.com/2code_php/search.php',
+        data: `u=${u}&c=${c}&a=${a}&n=${n}`,
+        success: function(msg) {
+            var data = JSON.parse(msg)
+            if (data.code == '1') {
+                add_content(msg)
+            } else {
+                alert('未找到符合条件的条目!');
+            }
+        },
+
+    });
+
 }
 
 function fix_code() {
@@ -100,13 +125,14 @@ function fix_code() {
     var a = $('#fix_address').val();
     var n = $('#fix_name').val();
     var c = $('#fix_url').val();
-    if (!a || !n || !c) {
+    var i2 = $('#fix_info').val();
+    if (!n || !c) {
         alert('请完整输入');
         return;
     }
     $.ajax({
         url: '//jxjweb.sc2yun.com/2code_php/fix.php',
-        data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}`,
+        data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}&i2=${i2}`,
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
@@ -141,7 +167,7 @@ function delete_code() {
 function add_code() {
     var u = localStorage.u;
     var c = $('#add_url').val().trim();
-    var i = $('#info').val().trim();
+    var i = $('#add_info').val().trim();
     var n = $('#add_name').val().trim();
     var a = '';
     if ($('#province').val() != -1) {
@@ -197,18 +223,13 @@ function login() {
     });
 }
 
-function menu() {
-    $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/content.php',
-        data: `u=${localStorage.u}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
-            if (data.code == '1') {
-
-                for (var i = data.content.length - 1; i >= 0; i--) {
-                    var html = '';
-                    html += `       <div class="col-md-6 col-sm-6">
-           <!-- BLOG THUMB -->
+function add_content(msg) {
+    $('.code_info').remove();
+    var data = JSON.parse(msg)
+    if (data.code == '1') {
+        for (var i = data.content.length - 1; i >= 0; i--) {
+            var html = '';
+            html += `       <div class="col-md-6 col-sm-6 code_info">
            <div class="media blog-thumb">
               <div class="media-object media-left ele${i}">
               </div>
@@ -218,30 +239,36 @@ function menu() {
                  <p>${data.content[i].content}</p>
                  <p>${data.content[i].address}</p>
                  <p>${data.content[i].info}</p>
-                 <button class="btn section-btn" onclick='fix("${data.content[i].id}")'>修改</button>
+                 <button class="btn section-btn" onclick='fix("${encodeURI(data.content[i].id)}","${encodeURI(data.content[i].address)}","${encodeURI(data.content[i].name)}","${encodeURI(data.content[i].content)}","${encodeURI(data.content[i].info)}")'>修改</button>
               </div>
            </div>
         </div>`;
-                    $('#code_b').append(html);
-                    var ele = `.ele${i}`;
-                    var url = `http://jxjweb.sc2yun.com/2code_php/url.php?id=${data.content[i].id}`;
-                    paint(url, ele);
-                }
+            $('#code_b').append(html);
+            var ele = `.ele${i}`;
+            var url = `http://jxjweb.sc2yun.com/2code_php/url.php?id=${data.content[i].id}`;
+            paint(url, ele);
+        }
 
-            } else {
-                localStorage.u = '';
-                start();
-            }
-        },
+    } else {
+        localStorage.u = '';
+        start();
+    }
+}
 
+function menu() {
+    $.ajax({
+        url: '//jxjweb.sc2yun.com/2code_php/content.php',
+        data: `u=${localStorage.u}`,
+        success: add_content
     });
 }
 
-function fix(id, a, n, c) {
+function fix(id, a, n, c, i) {
     localStorage.i = id;
-    $('#fix_address').val(a);
-    $('#fix_name').val(n);
-    $('#fix_url').val(c);
+    $('#fix_address').val(decodeURI(a));
+    $('#fix_name').val(decodeURI(n));
+    $('#fix_url').val(decodeURI(c));
+    $('#fix_info').val(decodeURI(i));
     $('#modal-form2').modal('show');
 }
 
