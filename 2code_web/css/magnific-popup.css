@@ -310,6 +310,7 @@ button::-moz-focus-inner {
 
 
 
+
 /* Main image in popup */
 
 img.mfp-img {
@@ -322,6 +323,7 @@ img.mfp-img {
     padding: 40px 0 40px;
     margin: 0 auto;
 }
+
 
 
 
@@ -389,6 +391,7 @@ img.mfp-img {
 
 
 
+
 /*self*/
 
 .search {
@@ -407,6 +410,10 @@ img.mfp-img {
 
 .search #search_code {
     background: #ce3232;
+    color: #fff;
+}
+
+.info_text {
     color: #fff;
 }
 

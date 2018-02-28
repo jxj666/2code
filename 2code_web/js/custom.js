@@ -111,7 +111,9 @@ function search_code() {
             if (data.code == '1') {
                 add_content(msg)
             } else {
-                alert('未找到符合条件的条目!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('未找到符合条件的条目!');
+
             }
         },
 
@@ -127,7 +129,9 @@ function fix_code() {
     var c = $('#fix_url').val();
     var i2 = $('#fix_info').val();
     if (!n || !c) {
-        alert('请完整输入');
+        $('#modal-form3').modal('show');
+        $('#modal-form3 .info_text').text('请完整输入');
+
         return;
     }
     $.ajax({
@@ -136,10 +140,14 @@ function fix_code() {
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
-                alert('修改成功!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('修改成功!');
+
                 location.reload();
             } else {
-                alert('修改失败!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('修改失败!');
+
             }
         },
 
@@ -155,10 +163,14 @@ function delete_code() {
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
-                alert('删除成功!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('删除成功!');
+
                 location.reload();
             } else {
-                alert('删除失败!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('删除失败!');
+
             }
         },
     });
@@ -180,7 +192,9 @@ function add_code() {
         a += $(`#district option[value="${$('#district').val()}"]`).text() + ' ';
     }
     if (!c || !n) {
-        alert('请完整输入!');
+        $('#modal-form3').modal('show');
+        $('#modal-form3 .info_text').text('请完整输入!');
+
         return;
     }
     $.ajax({
@@ -189,10 +203,12 @@ function add_code() {
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
-                alert('新增成功!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('新增成功!');
                 location.reload();
             } else {
-                alert('新增失败!');
+                $('#modal-form3').modal('show');
+                $('#modal-form3 .info_text').text('新增失败!');
             }
         },
 
@@ -229,6 +245,15 @@ function add_content(msg) {
     if (data.code == '1') {
         for (var i = data.content.length - 1; i >= 0; i--) {
             var html = '';
+            var code_id = data.content[i].id;
+            var code_id2 = '';
+            if (code_id > 99) {
+                code_id2 = code_id;
+            } else if (code_id > 9 && code_id <= 99) {
+                code_id2 = '0' + code_id;
+            } else {
+                code_id2 = '00' + code_id;
+            }
             html += `       <div class="col-md-6 col-sm-6 code_info">
            <div class="media blog-thumb">
               <div class="media-object media-left ele${i}">
@@ -236,9 +261,10 @@ function add_content(msg) {
               <div class="media-body blog-info">
                  <small><i class="fa fa-clock-o"></i>扫码次数:${data.content[i].num}</small>
                  <h3><a href="javascript:void(0)">${data.content[i].name}</a></h3>
-                 <p>${data.content[i].content}</p>
-                 <p>${data.content[i].address}</p>
-                 <p>${data.content[i].info}</p>
+                 <p>I D : ${code_id2}</p>
+                 <p>网址 : ${data.content[i].content}</p>
+                 <p>区域 : ${data.content[i].address || '无'}</p>
+                 <p>备注 : ${data.content[i].info || '无'}</p>
                  <button class="btn section-btn" onclick='fix("${encodeURI(data.content[i].id)}","${encodeURI(data.content[i].address)}","${encodeURI(data.content[i].name)}","${encodeURI(data.content[i].content)}","${encodeURI(data.content[i].info)}")'>修改</button>
               </div>
            </div>
