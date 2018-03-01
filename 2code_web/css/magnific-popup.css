@@ -305,8 +305,12 @@ button::-moz-focus-inner {
 
 .address_code {
     text-align: left;
+    margin-bottom: 10px;
 }
 
+.address_code select{
+    background: #fff;
+}
 
 
 

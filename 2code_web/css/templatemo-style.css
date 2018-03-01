@@ -947,7 +947,7 @@ http://www.templatemo.com/tm-509-hydro
         }
 
         .media.blog-thumb .media-left {
-            height: 250px;
+            height: auto;
         }
 
         .media.blog-thumb .media-left img {
@@ -969,7 +969,7 @@ http://www.templatemo.com/tm-509-hydro
         }
 
         .media.blog-thumb .media-left {
-            height: 550px;
+            height: auto;
         }
 
         .media.blog-thumb .media-left img {
@@ -1052,7 +1052,7 @@ http://www.templatemo.com/tm-509-hydro
         }
 
         .media.blog-thumb .media-left {
-            height: 320px;
+            height: auto;
         }
 
         .media.blog-thumb .media-left img {
