@@ -7,7 +7,8 @@ session_start();
 
  
 // 连主库
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','表');
+// $conn_test = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
 
 // Check connection
 if ($conn->connect_error) {
@@ -32,5 +33,5 @@ $verify->code = 0;
 }
 echo json_encode($verify);
 mysqli_close($conn);
-$conn->close();
+
 ?>

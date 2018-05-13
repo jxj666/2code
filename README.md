@@ -92,7 +92,7 @@ $result2 = $conn->query($sql);
 
 ### 效果演示:
 
-[点击](http://jxjweb.sc2yun.com/2code_web/index.html)
+[点击](http://jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
 
 账号: jxj2991
 密码: 666666

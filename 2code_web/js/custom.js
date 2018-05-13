@@ -104,7 +104,7 @@ function search_code() {
     var n = $('#search_name').val().trim();
     var c = $('#search_url').val().trim();
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/search.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/search.php',
         data: `u=${u}&c=${c}&a=${a}&n=${n}`,
         success: function(msg) {
             var data = JSON.parse(msg)
@@ -135,7 +135,7 @@ function fix_code() {
         return;
     }
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/fix.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/fix.php',
         data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}&i2=${i2}`,
         success: function(msg) {
             var data = JSON.parse(msg)
@@ -158,7 +158,7 @@ function delete_code() {
     var u = localStorage.u;
     var i = localStorage.i;
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/delete.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/delete.php',
         data: `u=${u}&i=${i}`,
         success: function(msg) {
             var data = JSON.parse(msg)
@@ -198,7 +198,7 @@ function add_code() {
         return;
     }
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/add.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/add.php',
         data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}`,
         success: function(msg) {
             var data = JSON.parse(msg)
@@ -219,7 +219,7 @@ function login() {
     var u = $('#user_g').val();
     var p = $('#password_g').val();
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/login.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/login.php',
         data: `u=${u}&p=${p}`,
         success: function(msg) {
             var data = JSON.parse(msg)
@@ -271,7 +271,7 @@ function add_content(msg) {
         </div>`;
             $('#code_b').append(html);
             var ele = `.ele${i}`;
-            var url = `http://jxjweb.sc2yun.com/2code_php/url.php?id=${data.content[i].id}`;
+            var url = `http://jxjweb.gz01.bdysite.com/2code/2code_php/url.php?id=${data.content[i].id}`;
             paint(url, ele);
         }
 
@@ -283,7 +283,7 @@ function add_content(msg) {
 
 function menu() {
     $.ajax({
-        url: '//jxjweb.sc2yun.com/2code_php/content.php',
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/content.php',
         data: `u=${localStorage.u}`,
         success: add_content
     });

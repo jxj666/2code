@@ -6,7 +6,7 @@ session_start();
 if ($_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');
 }
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','表');
+$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
 
 // Check connection
 if ($conn->connect_error) {
@@ -18,7 +18,12 @@ class Content {
     public $content = '00';
 }
 $content =new Content();
-$sql = "SELECT * FROM `2code_code` WHERE user = '".$u."'";
+// $sql = "SELECT * FROM `2code_code` WHERE user = '".$u."'";
+$sql = "SELECT * 
+FROM  `2code_code` 
+WHERE  `user` LIKE  '".$u."' 
+ORDER BY  `id` DESC 
+LIMIT 0 , 30";
 $result = $conn->query($sql);
 $data = array();
 if (mysqli_num_rows($result) > 0) {
