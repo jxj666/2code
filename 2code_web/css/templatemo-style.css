@@ -554,13 +554,36 @@ http://www.templatemo.com/tm-509-hydro
     }
 
     .blog-info {
-        padding: 50px 25px;
+        padding: 0px;
+        position: relative;
+    }
+
+    .blog-info p{
+        padding: 5px 20px;
+        margin:0;
+        font-size: 12px;
+        line-height: 1.5;
+        white-space: normal;
+        word-break: break-all;
+    }
+
+    .blog-info small {
+        padding: 20px 20px 5px;
     }
 
     .blog-info h3 {
         margin: 0;
-        padding: 8px 0 6px 0;
+        text-indent: 10px;
+        padding: 10px;
         text-transform: capitalize;
+    }
+    .blog-info button {
+        margin: 20px;
+        text-transform: capitalize;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
     }
 
     .blog-info .section-btn {
