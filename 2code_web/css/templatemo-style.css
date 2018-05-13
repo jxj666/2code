@@ -525,7 +525,7 @@ http://www.templatemo.com/tm-509-hydro
         border-radius: 3px;
         text-align: left;
         margin-bottom: 30px;
-        height: 350px;
+        min-height: 350px;
     }
 
     .media.blog-thumb .media-left {
