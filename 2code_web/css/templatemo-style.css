@@ -126,7 +126,9 @@ http://www.templatemo.com/tm-509-hydro
     .section-btn.section-btn2{
         background: #0575e6;
     }
-
+    .section-btn.section-btn3{
+        background: #777;
+    }
     .section-btn:hover,
     .section-btn:focus {
         background: #00F260;

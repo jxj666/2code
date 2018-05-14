@@ -5,7 +5,7 @@ $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $p = isset($_GET["p"]) ? $_GET["p"]: '';
 session_start();
 
- 
+
 // 连主库
 //$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
 include 'conn_sql.php';

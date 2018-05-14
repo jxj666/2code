@@ -100,8 +100,33 @@ function start() {
     $("#search_code").on('click', function() {
         search_code();
     })
+    //游客
+    $('#visit').on('click',function(){
+        visit();
+    })
 }
+function visit() {
+    var u = 'jxj2991';
+    var p = '666666';
+    $.ajax({
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/login.php',
+        data: `u=${u}&p=${p}`,
+        success: function(msg) {
+            var data = JSON.parse(msg)
+            if (data.code == '1') {
+                console.log('ok');
+                localStorage.u = data.user;
+                $('.user').show();
+                $('.un_user').hide();
+                $('.user_name').text(localStorage.u);
+                menu();
+            } else {
+                $('#visit a').html('系统错误!');
+            }
+        },
 
+    });
+}
 function search_code() {
     var u = localStorage.u;
     var a = $('#search_address').val().trim();
