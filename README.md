@@ -42,3 +42,7 @@
 ### TODO
 
 1. 彩色二维码
+
+### OTHER   
+
+内推(北京人人贷)中高级前端工程师,简历发送至webjxj@foxmail.com
