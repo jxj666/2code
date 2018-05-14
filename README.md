@@ -92,11 +92,8 @@ $result2 = $conn->query($sql);
 
 ### 效果演示:
 
-[点击](http://jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
-
-账号: jxj2991
-密码: 666666
+[点击](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
 
 ### 完整代码:
 
-[github](https://github.com/jxj322991/2code)
+[github](//github.com/jxj322991/2code)
