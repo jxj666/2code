@@ -14,81 +14,10 @@
 ![技术](info/1.png)
 
 ### 重点技术
-1.使用插件绘制二维码
-```
-// https://github.com/jeromeetienne/jquery-qrcode
-// js
 
-function paint(url, ele) {　　　　　　
-    outputQRCod(url, 200, 200);　　　　　　　　　　 //转换中文字符串
-    function toUtf8(str) {
-        var out, i, len, c;
-        out = "";
-        len = str.length;
-        for (i = 0; i < len; i++) {
-            c = str.charCodeAt(i);
-            if ((c >= 0x0001) && (c <= 0x007F)) {
-                out += str.charAt(i);
-            } else if (c > 0x07FF) {
-                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
-                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
-                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
-            } else {
-                out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
-                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
-            }
-        }
-        return out;
-    }
+1. 使用插件绘制二维码 
+2. 查询数据库记录跳转页面
 
-    //生成二维码
-    function outputQRCod(txt, width, height) {
-        //先清空
-        $(ele).empty();
-        //中文格式转换
-        var str = toUtf8(txt);
-        //生成二维码
-        $(ele).qrcode({
-            render: "canvas", //canvas和table两种渲染方式
-            width: width,
-            height: height,
-            text: str
-        });
-    }
-}
-
-```
-2.使用 php 跳转页面
-```
-//php
-
-header("Access-Control-Allow-Origin: *");
-$id = isset($_GET["id"]) ? $_GET["id"] : '';
-// 连主库
-$conn = mysqli_connect('w.rdc.sae.sina.com.cn' . ':' . '3306', 'aaa', 'bbb', 'ccc');
-// Check connection
-if ($conn->connect_error) {
-    die("连接失败: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM `2code_code` WHERE id = '" . $id . "'";
-$result = $conn->query($sql);
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        if (!strpos($row["content"], "//")) {
-            $k = "//" . $row["content"];
-        } else {
-            $k = $row["content"];
-        }
-        $v=$row["num"]+1;
-$sql = "UPDATE `app_jxjweb`.`2code_code` SET `num` = '".$v."' WHERE `2code_code`.`id` = '".$id."'";
-$result2 = $conn->query($sql);
-        Header("HTTP/1.1 303 See Other");
-        Header("Location: $k");
-    }
-} else {
-    exit('错误路径!');
-}
-```
 
 ### 安装步骤
 
