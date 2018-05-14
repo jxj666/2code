@@ -27,7 +27,9 @@ FROM  `2code_code`
 WHERE address LIKE  '%".$a."%'
 AND name LIKE  '%".$n."%'
 AND content LIKE  '%".$c."%'
-AND user =  '".$u."'";
+AND user =  '".$u."'
+ORDER BY `id` DESC ";
+
 $result = $conn->query($sql);
 $data = array();
 if (mysqli_num_rows($result) > 0) {
