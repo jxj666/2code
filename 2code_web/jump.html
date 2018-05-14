@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>欢迎光临</title>
+</head>
+
+<body>
+    <div class="flex" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0; ">
+        <div class="img" style='width: 66%;margin:33vh auto'>
+            <img src="./images/loading.gif" alt="" style="width: 100%">
+        </div>
+    </div>
     <script type="text/javascript">
     var params = {};
     ! function() {
@@ -14,8 +22,9 @@
         }
     }();
     var id = params['id'];
-    var url= `//jxjweb.gz01.bdysite.com/2code/2code_php/url_html.php?id=${id}`;
+    var url = `//jxjweb.gz01.bdysite.com/2code/2code_php/url_html.php?id=${id}`;
     ajax(url);
+
     function ajax(url) {
         var oAjax = new XMLHttpRequest();
         oAjax.open("GET", url, true); //把要读取的参数的传过来。
@@ -23,10 +32,10 @@
         oAjax.onreadystatechange = function() {
             if (oAjax.readyState == 4) {
                 if (oAjax.status == 200) {
-                    var url=JSON.parse(oAjax.responseText).url;
-                    
-                    if(url.search(/\/\//)<0){
-                      var url=`//${url}`;
+                    var url = JSON.parse(oAjax.responseText).url;
+
+                    if (url.search(/\/\//) < 0) {
+                        var url = `//${url}`;
                     }
                     window.location.assign(url);
                 } else {
@@ -38,10 +47,6 @@
         };
     }
     </script>
-</head>
-
-<body>
-    <h1>欢迎!</h1>
 </body>
 
 </html>

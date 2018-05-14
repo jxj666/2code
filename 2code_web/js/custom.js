@@ -301,7 +301,7 @@ function add_content(msg) {
         </div>`;
             $('#code_b').append(html);
             var ele = `.ele${i}`;
-            var url = `http://jxjweb.gz01.bdysite.com/2code/2code_web/jump.html?id=${data.content[i].id}&&weixin=jxj228199223&qq=228322991&v=0.2.1&t1=helloWorld&t2=你好!欢迎光临!`;
+            var url = `http://jxjweb.gz01.bdysite.com/2code/2code_web/jump.html?id=${data.content[i].id}&&qq=228322991&v=0.2.1`;
             paint(url, ele);
         }
 
