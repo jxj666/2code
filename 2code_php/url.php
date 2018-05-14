@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
             $k = $row["content"];
         }
         $v=$row["num"]+1;
-$sql = "UPDATE `app_jxjweb`.`2code_code` SET `num` = '".$v."' WHERE `2code_code`.`id` = '".$id."'";
+$sql = "UPDATE `2code_code` SET `num` = '".$v."' WHERE `2code_code`.`id` = '".$id."'";
 $result2 = $conn->query($sql);
         Header("HTTP/1.1 303 See Other");
         Header("Location: $k");

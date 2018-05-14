@@ -12,7 +12,8 @@ if ($_SESSION['code']!=$u) {
 }
  
 // 连主库
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+include 'conn_sql.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -20,10 +21,10 @@ if ($conn->connect_error) {
 } 
  
 
-$sql="INSERT INTO `app_jxjweb`.`2code_code` (`id`, `user`, `num`, `content`, `address`, `address_id`, `name`, `info`) VALUES (NULL, '".$u."', '0', '".$c."', '".$a."', '', '".$n."','".$i."')";
+$sql="INSERT INTO `2code_code` (`id`, `user`, `num`, `content`, `address`, `address_id`, `name`, `info`) VALUES (NULL, '".$u."', '0', '".$c."', '".$a."', '', '".$n."','".$i."')";
 
 
-
+// echo ($sql);
 $result = $conn->query($sql);
 
 class Verify {
@@ -39,5 +40,5 @@ $verify->code = 0;
 }
 echo json_encode($verify);
 mysqli_close($conn);
-$conn->close();
+
 ?>

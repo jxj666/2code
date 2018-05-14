@@ -12,7 +12,8 @@ if ($_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');
 }
 // 连主库
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+include 'conn_sql.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -20,7 +21,7 @@ if ($conn->connect_error) {
 } 
  
 
-$sql="UPDATE  `app_jxjweb`.`2code_code` SET  `content` =  '".$c."',
+$sql="UPDATE  `2code_code` SET  `content` =  '".$c."',
 `address` =  '".$a."',
 `name` =  '".$n."',
 `info` =  '".$i2."'  WHERE  `2code_code`.`id` ='".$i."' AND `2code_code`.`user` ='".$u."'";
@@ -42,5 +43,4 @@ $verify->code = 0;
 }
 echo json_encode($verify);
 mysqli_close($conn);
-$conn->close();
 ?>

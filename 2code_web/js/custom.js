@@ -243,7 +243,7 @@ function add_content(msg) {
     $('.code_info').remove();
     var data = JSON.parse(msg)
     if (data.code == '1') {
-        for (var i = data.content.length - 1; i >= 0; i--) {
+        for (var i = 0; i < data.content.length; i++) {
             var html = '';
             var code_id = data.content[i].id;
             var code_id2 = '';

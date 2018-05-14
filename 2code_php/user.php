@@ -1,7 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 // 连主库
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+
+
+//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+include 'conn_sql.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -22,3 +25,5 @@ if (mysqli_num_rows($result) > 0) {
 }
 $conn->close();
 ?>
+
+

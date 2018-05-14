@@ -9,14 +9,15 @@ if ($_SESSION['code']!=$u) {
 }
  
 // 连主库
-$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
+include 'conn_sql.php';
 
 // Check connection
 if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 } 
 
-$sql="DELETE FROM `app_jxjweb`.`2code_code` WHERE `2code_code`.`id` = '".$i."' AND `2code_code`.`user` ='".$u."'";
+$sql="DELETE FROM `2code_code` WHERE `2code_code`.`id` = '".$i."' AND `2code_code`.`user` ='".$u."'";
 
 $result = $conn->query($sql);
 
@@ -32,5 +33,5 @@ $verify->code = 0;
 }
 echo json_encode($verify);
 mysqli_close($conn);
-$conn->close();
+
 ?>
