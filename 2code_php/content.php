@@ -27,7 +27,7 @@ ORDER BY  `id` DESC
 LIMIT 0 , 30";
 $result = $conn->query($sql);
 $data = array();
-if (mysqli_num_rows($result) > 0) {
+if ($result) {
 while ($row = mysqli_fetch_assoc($result)) {
     $data[] = $row;
 }

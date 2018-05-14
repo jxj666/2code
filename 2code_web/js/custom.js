@@ -76,6 +76,10 @@ function start() {
         $('.user').hide();
         $('.un_user').show();
     }
+    //注册
+    $('#register_btn').on('click', function() {
+        register();
+    });
     //登录
     $('#login_btn').on('click', function() {
         login();
@@ -231,8 +235,34 @@ function login() {
                 $('.un_user').hide();
                 $('.user_name').text(localStorage.u);
                 menu();
+                $('#login_info').html(' ');
             } else {
                 $('#login_info').html('账号密码错误!');
+            }
+        },
+
+    });
+}
+
+function register() {
+    var u = $('#user_gr').val() || 'test';
+    var p = $('#password_gr').val() || 'test';
+    $.ajax({
+        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/register.php',
+        data: `u=${u}&p=${p}`,
+        success: function(msg) {
+            var data = JSON.parse(msg)
+            if (data.code == '1') {
+                console.log('ok');
+                localStorage.u = data.user;
+                $('#modal-form-register').modal('hide');
+                $('.user').show();
+                $('.un_user').hide();
+                $('.user_name').text(localStorage.u);
+                $('#register_info').html(' ');
+                menu();
+            } else {
+                $('#register_info').html('注册失败!');
             }
         },
 
@@ -271,7 +301,7 @@ function add_content(msg) {
         </div>`;
             $('#code_b').append(html);
             var ele = `.ele${i}`;
-            var url = `http://jxjweb.gz01.bdysite.com/2code/2code_php/url.php?id=${data.content[i].id}`;
+            var url = `https://jxjweb.top?id=${data.content[i].id}&&weixin=jxj228199223&qq=228322991&v=0.2.1&t1=helloWorld&t2=你好!欢迎光临!`;
             paint(url, ele);
         }
 

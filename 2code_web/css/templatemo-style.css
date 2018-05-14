@@ -123,6 +123,9 @@ http://www.templatemo.com/tm-509-hydro
         -webkit-transition: 0.5s;
         transition: 0.5s;
     }
+    .section-btn.section-btn2{
+        background: #0575e6;
+    }
 
     .section-btn:hover,
     .section-btn:focus {
@@ -1104,7 +1107,7 @@ http://www.templatemo.com/tm-509-hydro
         color: #fff;
     }
 
-    #login_btn {
+    #login_btn,#register_btn {
         background: red;
         color: #fff;
     }
