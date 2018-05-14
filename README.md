@@ -90,6 +90,12 @@ $result2 = $conn->query($sql);
 }
 ```
 
+### 安装步骤
+
+1. 导入 sql 数据库
+2. 修改 php 连接数据库路径
+3. 修改 js ajax 连接服务器的路径
+
 ### 效果演示:
 
 [点击](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
