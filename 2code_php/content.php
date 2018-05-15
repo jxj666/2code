@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 $u = isset($_GET["u"]) ? $_GET["u"] : '';
 // 连主库
 session_start();
-if ($_SESSION['code']!=$u) {
+if (!$_SESSION || $_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');
 }
 //$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
