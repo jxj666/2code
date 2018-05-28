@@ -19,21 +19,16 @@
 
 ![技术](info/1.png)
 
-### 重点技术
-
-1. 使用插件绘制二维码 
-2. 查询数据库记录跳转页面
-
-
 ### 安装步骤
 
 1. 导入 sql 数据库
 2. 添加 conn_sql.php , 连接你自己的库($conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名'))
-3. 修改 js 中 ajax 的请求地址 ( 连接你的服务器路径 )
+3. 修改 js (custom.js) 中 ajax 的请求地址 ( 连接你的服务器路径 ) 与其他有关的url相关路径
 
 ### 效果演示:
 
-[点击](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
+[点击(5月28日维护中)](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
+
 
 ### 完整代码:
 
@@ -42,6 +37,12 @@
 ### TODO
 
 1. 彩色二维码
+
+### fix
+
+2.0 大改版,修复大量错误
+
+2.1 修正新建/修改活码的上传方法
 
 ### OTHER   
 
