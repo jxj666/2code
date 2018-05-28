@@ -1,11 +1,11 @@
 <?php
 
 header("Access-Control-Allow-Origin: *"); 
-$u = isset($_GET["u"]) ? $_GET["u"] : '';
-$c = isset($_GET["c"]) ? $_GET["c"]: '';
-$a = isset($_GET["a"]) ? $_GET["a"] : '';
-$n = isset($_GET["n"]) ? $_GET["n"]: '';
-$i = isset($_GET["i"]) ? $_GET["i"]: '';
+$u = isset($_POST["u"]) ? $_POST["u"] : '';
+$c = isset($_POST["c"]) ? $_POST["c"]: '';
+$a = isset($_POST["a"]) ? $_POST["a"] : '';
+$n = isset($_POST["n"]) ? $_POST["n"]: '';
+$i = isset($_POST["i"]) ? $_POST["i"]: '';
 session_start();
 if ($_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');

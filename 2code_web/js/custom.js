@@ -101,10 +101,11 @@ function start() {
         search_code();
     })
     //游客
-    $('#visit').on('click',function(){
+    $('#visit').on('click', function() {
         visit();
     })
 }
+
 function visit() {
     var u = 'jxj2991';
     var p = '666666';
@@ -127,6 +128,7 @@ function visit() {
 
     });
 }
+
 function search_code() {
     var u = localStorage.u;
     var a = $('#search_address').val().trim();
@@ -165,7 +167,14 @@ function fix_code() {
     }
     $.ajax({
         url: '//jxjweb.gz01.bdysite.com/2code/2code_php/fix.php',
-        data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}&i2=${i2}`,
+        method: "POST",
+        data: {
+            u: u,
+            c: c,
+            a: a,
+            n: n,
+            i: i,
+        },
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {
@@ -228,7 +237,14 @@ function add_code() {
     }
     $.ajax({
         url: '//jxjweb.gz01.bdysite.com/2code/2code_php/add.php',
-        data: `u=${u}&c=${c}&a=${a}&n=${n}&i=${i}`,
+        method: "POST",
+        data: {
+            u: u,
+            c: c,
+            a: a,
+            n: n,
+            i: i,
+        },
         success: function(msg) {
             var data = JSON.parse(msg)
             if (data.code == '1') {

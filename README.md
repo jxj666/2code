@@ -27,7 +27,7 @@
 
 ### 效果演示:
 
-[点击(5月28日维护中)](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
+[点击](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
 
 
 ### 完整代码:
