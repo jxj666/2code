@@ -1,12 +1,16 @@
+'use strict';
+
+var base_url = '//jxjweb.gz01.bdysite.com/2code';
+
 (function($) {
 
     "use strict";
 
     // PRE LOADER
+
     $(window).load(function() {
         $('.preloader').fadeOut(1000); // set duration in brackets    
     });
-
 
     // MENU
     $('.navbar-collapse a').on('click', function() {
@@ -21,12 +25,10 @@
         }
     });
 
-
     // PARALLAX EFFECT
     $.stellar({
-        horizontalScrolling: false,
+        horizontalScrolling: false
     });
-
 
     // MAGNIFIC POPUP
     $('.image-popup').magnificPopup({
@@ -45,7 +47,7 @@
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
             // By defailt it looks for an image tag:
-            opener: function(openerElement) {
+            opener: function opener(openerElement) {
                 // openerElement is the element on which popup was initialized, in this case its <a> tag
                 // you don't need to add "opener" option if this code matches your needs, it's defailt one.
                 return openerElement.is('img') ? openerElement : openerElement.find('img');
@@ -63,7 +65,6 @@
         });
     });
     start();
-
 })(jQuery);
 
 function start() {
@@ -99,21 +100,21 @@ function start() {
     //查询
     $("#search_code").on('click', function() {
         search_code();
-    })
+    });
     //游客
     $('#visit').on('click', function() {
         visit();
-    })
+    });
 }
 
 function visit() {
     var u = 'jxj2991';
     var p = '666666';
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/login.php',
-        data: `u=${u}&p=${p}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        url: base_url + '/2code_php/login.php',
+        data: 'u=' + u + '&p=' + p,
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 console.log('ok');
                 localStorage.u = data.user;
@@ -124,7 +125,7 @@ function visit() {
             } else {
                 $('#visit a').html('系统错误!');
             }
-        },
+        }
 
     });
 }
@@ -135,21 +136,19 @@ function search_code() {
     var n = $('#search_name').val().trim();
     var c = $('#search_url').val().trim();
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/search.php',
-        data: `u=${u}&c=${c}&a=${a}&n=${n}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        url: base_url + '/2code_php/search.php',
+        data: 'u=' + u + '&c=' + c + '&a=' + a + '&n=' + n,
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
-                add_content(msg)
+                add_content(msg);
             } else {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('未找到符合条件的条目!');
-
             }
-        },
+        }
 
     });
-
 }
 
 function fix_code() {
@@ -166,17 +165,17 @@ function fix_code() {
         return;
     }
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/fix.php',
+        url: base_url + '/2code_php/fix.php',
         method: "POST",
         data: {
             u: u,
             c: c,
             a: a,
             n: n,
-            i: i,
+            i: i
         },
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('修改成功!');
@@ -185,9 +184,8 @@ function fix_code() {
             } else {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('修改失败!');
-
             }
-        },
+        }
 
     });
 }
@@ -196,10 +194,10 @@ function delete_code() {
     var u = localStorage.u;
     var i = localStorage.i;
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/delete.php',
-        data: `u=${u}&i=${i}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        url: base_url + '/2code_php/delete.php',
+        data: 'u=' + u + '&i=' + i,
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('删除成功!');
@@ -208,9 +206,8 @@ function delete_code() {
             } else {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('删除失败!');
-
             }
-        },
+        }
     });
 }
 
@@ -221,13 +218,13 @@ function add_code() {
     var n = $('#add_name').val().trim();
     var a = '';
     if ($('#province').val() != -1) {
-        a += $(`#province option[value="${$('#province').val()}"]`).text() + ' ';
+        a += $('#province option[value="' + $('#province').val() + '"]').text() + ' ';
     }
     if ($('#city').val() != -1) {
-        a += $(`#city option[value="${$('#city').val()}"]`).text() + ' ';
+        a += $('#city option[value="' + $('#city').val() + '"]').text() + ' ';
     }
     if ($('#district').val() != -1) {
-        a += $(`#district option[value="${$('#district').val()}"]`).text() + ' ';
+        a += $('#district option[value="' + $('#district').val() + '"]').text() + ' ';
     }
     if (!c || !n) {
         $('#modal-form3').modal('show');
@@ -236,17 +233,17 @@ function add_code() {
         return;
     }
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/add.php',
+        url: base_url + '/2code_php/add.php',
         method: "POST",
         data: {
             u: u,
             c: c,
             a: a,
             n: n,
-            i: i,
+            i: i
         },
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('新增成功!');
@@ -255,7 +252,7 @@ function add_code() {
                 $('#modal-form3').modal('show');
                 $('#modal-form3 .info_text').text('新增失败!');
             }
-        },
+        }
 
     });
 }
@@ -264,10 +261,10 @@ function login() {
     var u = $('#user_g').val();
     var p = $('#password_g').val();
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/login.php',
-        data: `u=${u}&p=${p}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        url: base_url + '/2code_php/login.php',
+        data: 'u=' + u + '&p=' + p,
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 console.log('ok');
                 localStorage.u = data.user;
@@ -280,7 +277,7 @@ function login() {
             } else {
                 $('#login_info').html('账号密码错误!');
             }
-        },
+        }
 
     });
 }
@@ -289,10 +286,10 @@ function register() {
     var u = $('#user_gr').val() || 'test';
     var p = $('#password_gr').val() || 'test';
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/register.php',
-        data: `u=${u}&p=${p}`,
-        success: function(msg) {
-            var data = JSON.parse(msg)
+        url: base_url + '/2code_php/register.php',
+        data: 'u=' + u + '&p=' + p,
+        success: function success(msg) {
+            var data = JSON.parse(msg);
             if (data.code == '1') {
                 console.log('ok');
                 localStorage.u = data.user;
@@ -305,14 +302,14 @@ function register() {
             } else {
                 $('#register_info').html('注册失败!');
             }
-        },
+        }
 
     });
 }
 
 function add_content(msg) {
     $('.code_info').remove();
-    var data = JSON.parse(msg)
+    var data = JSON.parse(msg);
     if (data.code == '1') {
         for (var i = 0; i < data.content.length; i++) {
             var html = '';
@@ -325,27 +322,12 @@ function add_content(msg) {
             } else {
                 code_id2 = '00' + code_id;
             }
-            html += `       <div class="col-md-6 col-sm-6 code_info">
-           <div class="media blog-thumb">
-              <div class="media-object media-left ele${i}">
-              </div>
-              <div class="media-body blog-info">
-                 <small><i class="fa fa-clock-o"></i>扫码次数:${data.content[i].num}</small>
-                 <h3><a href="javascript:void(0)">${data.content[i].name}</a></h3>
-                 <p>I D : ${code_id2}</p>
-                 <p>网址 : ${data.content[i].content}</p>
-                 <p>区域 : ${data.content[i].address || '无'}</p>
-                 <p>备注 : ${data.content[i].info || '无'}</p>
-                 <button class="btn section-btn" onclick='fix("${encodeURI(data.content[i].id)}","${encodeURI(data.content[i].address)}","${encodeURI(data.content[i].name)}","${encodeURI(data.content[i].content)}","${encodeURI(data.content[i].info)}")'>修改</button>
-              </div>
-           </div>
-        </div>`;
+            html += '       <div class="col-md-6 col-sm-6 code_info">\n           <div class="media blog-thumb">\n              <div class="media-object media-left ele' + i + '">\n              </div>\n              <div class="media-body blog-info">\n                 <small><i class="fa fa-clock-o"></i>\u626B\u7801\u6B21\u6570:' + data.content[i].num + '</small>\n                 <h3><a href="javascript:void(0)">' + data.content[i].name + '</a></h3>\n                 <p>I D : ' + code_id2 + '</p>\n                 <p>\u7F51\u5740 : ' + data.content[i].content + '</p>\n                 <p>\u533A\u57DF : ' + (data.content[i].address || '无') + '</p>\n                 <p>\u5907\u6CE8 : ' + (data.content[i].info || '无') + '</p>\n                 <button class="btn section-btn" onclick=\'fix("' + encodeURI(data.content[i].id) + '","' + encodeURI(data.content[i].address) + '","' + encodeURI(data.content[i].name) + '","' + encodeURI(data.content[i].content) + '","' + encodeURI(data.content[i].info) + '")\'>\u4FEE\u6539</button>\n              </div>\n           </div>\n        </div>';
             $('#code_b').append(html);
-            var ele = `.ele${i}`;
-            var url = `http://jxjweb.gz01.bdysite.com/2code/2code_web/jump.html?id=${data.content[i].id}&&qq=228322991&v=0.2.1`;
+            var ele = '.ele' + i;
+            var url = base_url + '/2code_web/jump.html?id=' + data.content[i].id + '&&qq=228322991&v=0.2.1';
             paint(url, ele);
         }
-
     } else {
         localStorage.u = '';
         start();
@@ -354,8 +336,8 @@ function add_content(msg) {
 
 function menu() {
     $.ajax({
-        url: '//jxjweb.gz01.bdysite.com/2code/2code_php/content.php',
-        data: `u=${localStorage.u}`,
+        url: base_url + '/2code_php/content.php',
+        data: 'u=' + localStorage.u,
         success: add_content
     });
 }
@@ -369,23 +351,23 @@ function fix(id, a, n, c, i) {
     $('#modal-form2').modal('show');
 }
 
-function paint(url, ele) {　　　　　　
-    outputQRCod(url, 200, 200);　　　　　　　　　　 //转换中文字符串
+function paint(url, ele) {
+    outputQRCod(url, 200, 200); //转换中文字符串
     function toUtf8(str) {
         var out, i, len, c;
         out = "";
         len = str.length;
         for (i = 0; i < len; i++) {
             c = str.charCodeAt(i);
-            if ((c >= 0x0001) && (c <= 0x007F)) {
+            if (c >= 0x0001 && c <= 0x007F) {
                 out += str.charAt(i);
             } else if (c > 0x07FF) {
-                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
-                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
-                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                out += String.fromCharCode(0xE0 | c >> 12 & 0x0F);
+                out += String.fromCharCode(0x80 | c >> 6 & 0x3F);
+                out += String.fromCharCode(0x80 | c >> 0 & 0x3F);
             } else {
-                out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
-                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+                out += String.fromCharCode(0xC0 | c >> 6 & 0x1F);
+                out += String.fromCharCode(0x80 | c >> 0 & 0x3F);
             }
         }
         return out;
