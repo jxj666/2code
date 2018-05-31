@@ -1,4 +1,4 @@
-# 二维码活码管理系统 v 2.1
+# 二维码活码管理系统 v 2.1.1
 
 ![技术](info/3.png)
 
@@ -21,9 +21,13 @@
 
 ### 安装步骤
 
-1. 导入 sql 数据库
-2. 添加 conn_sql.php , 连接你自己的库($conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名'))
-3. 修改 js (custom.js) 中 ajax 的请求地址 ( 连接你的服务器路径 ) 与其他有关的 url 路径
+- 导入 sql 数据库
+- 在 2code_php 中添加 conn_sql.php , 连接你自己的库($conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名'))
+例子:
+![0](info/053101.jpeg)
+
+- 修改 js (custom.js) 中 ajax 的请求地址 ( 连接你的服务器路径 ) 与其他有关的 url 路径
+- 上传 2code_php 2code_web 到你的服务器
 
 ### 效果演示:
 
