@@ -23,12 +23,9 @@
 
 - 导入 sql 数据库
 
-- 在 2code_php 中添加 conn_sql.php , 连接你自己的库 ($conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名')) , 例子:
-![0](info/053101.jpeg)
+- 在 2code_php 中添加 conn_sql.php , 连接你自己的库 ($conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名'))
 
 - 修改 js (custom.js) 中 base_url 变量 (你预计把 2code文件 放置在服务器下的位置 , 即文件的域名位置),
-例子:
-![0](info/053102.jpeg)
 
 - 上传修改好的 2code文件夹 到你的服务器预定位置
 
