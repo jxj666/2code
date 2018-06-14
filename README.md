@@ -27,11 +27,11 @@
 
 - 修改 js (custom.js) 中 base_url 变量 (你预计把 2code文件 放置在服务器下的位置 , 即文件的域名位置)
 
-- 修改 jumb.html 中的 url 地址(
+- 修改 jumb.html 中的 url 地址:
 ```
 var url = `你的路径/2code_php/url_html.php?id=${id}`;
 ```
-)
+
 
 - 上传修改好的 2code文件夹 到你的服务器预定位置
 
