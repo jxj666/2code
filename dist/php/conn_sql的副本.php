@@ -1,5 +1,13 @@
 <?php 
-$conn = mysqli_connect('host','username','password','dbname');
+/*
+ * @Description: 
+ * @Author: jinxiaojian
+ * @Email: jinxiaojian@youxin.com
+ * @Date: 2019-01-25 13:29:44
+ * @LastEditTime: 2020-01-13 16:57:27
+ * @LastEditors: 靳肖健
+ */
+$conn = mysqli_connect('host','username','password','dbname','port');
 ?>
 
 <!-- 连接你的数据库 -->

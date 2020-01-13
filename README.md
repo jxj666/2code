@@ -1,6 +1,16 @@
-# 二维码活码管理系统 v 2.1.2
+<!--
+ * @Description: 
+ * @Author: jinxiaojian
+ * @Email: jinxiaojian@youxin.com
+ * @Date: 2019-01-25 13:29:43
+ * @LastEditTime : 2020-01-13 17:00:20
+ * @LastEditors  : 靳肖健
+ -->
+# 二维码活码管理系统 v 2.1.13
 
-![技术](info/3.png)
+![主页](info/3.png)
+## [//m.jxjweb.top/2code/dist/web/](//m.jxjweb.top/2code/dist/web/)
+
 
 ##### 二维码又称二维条码,常见的二维码为QR Code,QR全称Quick Response,是一个近几年来移动设备上超流行的一种编码方式,它比传统的Bar Code条形码能存更多的信息,也能表示更多的数据类型.
 
@@ -18,31 +28,35 @@
 ### 系统技术
 
 ![技术](info/1.png)
+##### 使用需要你会以上技术
 
 ### 安装步骤
 
-- 导入 sql 数据库
+- 主要文件都存放在项目的 dist 文件中
 
-- 在 2code_php 中添加 conn_sql.php , 连接你自己的库 (参照 conn_sql的副本.php)
+- 导入 dist/sql 里的数据库文件至数据库
 
-- 修改 js (custom.js) 中 base_url 变量 (你预计把 2code文件 放置在服务器下的位置 , 即文件的域名位置)
+- 在 dist/php 中添加 conn_sql.php , 连接你自己的数据库 (参照 conn_sql的副本.php)
+![1](info/sql.png)
 
-- 修改 jumb.html 中的 url 地址:
-```
-var url = `你的路径/2code_php/url_html.php?id=${id}`;
-```
+- 修改 dist/web 中 custom.js 的 base_url 变量 (你预计把 2code文件 放置在服务器下的位置 , 即文件的域名位置)
+![2](info/custom.png)
+
+- 修改 jump.html 中的 url 地址:
+![3](info/jump.png)
+
 
 
 - 上传修改好的 2code文件夹 到你的服务器预定位置
 
 ### 效果演示:
 
-[点击](//jxjweb.gz01.bdysite.com/2code/2code_web/index.html)
+[//m.jxjweb.top/2code/dist/web/](//m.jxjweb.top/2code/dist/web/)
 
 
 ### 完整代码:
 
-[github](//github.com/jxj322991/2code)
+[//github.com/jxj322991/2code](//github.com/jxj322991/2code)
 
 ### TODO
 
