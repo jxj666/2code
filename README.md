@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-01-25 13:29:43
- * @LastEditTime : 2020-01-13 17:00:20
+ * @LastEditTime : 2020-01-13 17:01:16
  * @LastEditors  : 靳肖健
  -->
 # 二维码活码管理系统 v 2.1.13
@@ -37,12 +37,15 @@
 - 导入 dist/sql 里的数据库文件至数据库
 
 - 在 dist/php 中添加 conn_sql.php , 连接你自己的数据库 (参照 conn_sql的副本.php)
+
 ![1](info/sql.png)
 
 - 修改 dist/web 中 custom.js 的 base_url 变量 (你预计把 2code文件 放置在服务器下的位置 , 即文件的域名位置)
+
 ![2](info/custom.png)
 
-- 修改 jump.html 中的 url 地址:
+- 修改 jump.html 中的 url 地址
+
 ![3](info/jump.png)
 
 
