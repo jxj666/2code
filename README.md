@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-01-25 13:29:43
- * @LastEditTime : 2020-01-13 17:01:16
+ * @LastEditTime : 2020-01-13 17:08:49
  * @LastEditors  : 靳肖健
  -->
 # 二维码活码管理系统 v 2.1.13
@@ -66,6 +66,8 @@
 1. 彩色二维码
 
 ### fix
+
+2.13 数据库迁移
 
 2.1 修正新建/修改活码的上传方法
 
