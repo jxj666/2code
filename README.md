@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-01-25 13:29:43
- * @LastEditTime : 2020-01-13 17:08:49
+ * @LastEditTime : 2020-01-13 17:16:07
  * @LastEditors  : 靳肖健
  -->
 # 二维码活码管理系统 v 2.1.13
@@ -28,7 +28,7 @@
 ### 系统技术
 
 ![技术](info/1.png)
-##### 使用需要你会以上技术
+##### 使用本项目需要你了解以上技术
 
 ### 安装步骤
 
