@@ -1,6 +1,15 @@
 <?php
+/*
+ * @Description: 
+ * @Author: jinxiaojian
+ * @Email: jinxiaojian@youxin.com
+ * @Date: 2019-01-25 13:29:44
+ * @LastEditTime: 2020-01-21 10:55:47
+ * @LastEditors: 靳肖健
+ */
+// 连主库
+include 'conn_sql.php';
 
-header("Access-Control-Allow-Origin: *"); 
 $u = isset($_POST["u"]) ? $_POST["u"] : '';
 $c = isset($_POST["c"]) ? $_POST["c"]: '';
 $a = isset($_POST["a"]) ? $_POST["a"] : '';
@@ -11,9 +20,6 @@ session_start();
 if ($_SESSION['code']!=$u) {
 	exit('{"code":0,"msg":"非法操作!"}');
 }
-// 连主库
-//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
-include 'conn_sql.php';
 
 // Check connection
 if ($conn->connect_error) {

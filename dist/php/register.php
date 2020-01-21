@@ -1,14 +1,21 @@
 <?php
+/*
+ * @Description: 
+ * @Author: jinxiaojian
+ * @Email: jinxiaojian@youxin.com
+ * @Date: 2019-01-25 13:29:44
+ * @LastEditTime : 2020-01-21 10:56:45
+ * @LastEditors  : 靳肖健
+ */
+// 连主库
+include 'conn_sql.php';
 
-header("Access-Control-Allow-Origin: *"); 
 $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $p = isset($_GET["p"]) ? $_GET["p"]: '';
 session_start();
 
  
-// 连主库
-//$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
-include 'conn_sql.php';
+
 
 // Check connection
 if ($conn->connect_error) {
